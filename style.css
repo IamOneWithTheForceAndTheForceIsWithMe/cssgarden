@@ -1,12 +1,10 @@
-
+/*Mobile first approach*/
 div.page-wrapper{
-    max-width: 620px;
+    /*do not need max width because
+    we use media after width is bigger than ...*/
     margin: auto;
 }
     #zen-intro/*header plus introduction*/{
-        display: grid;
-        grid-template-columns: 200px 400px;
-        grid-gap: 20px;
     }
         #zen-intro header{
             background-color: green;
@@ -19,25 +17,17 @@ div.page-wrapper{
         #zen-preamble{
             background-color: darkorange;
             padding: 10px;
-            grid-column-start: 1;
-            grid-column-end: 3;
-
         }
             #zen-preamble h3{}
     #zen-supporting/*main*/{
-        display:grid;
-        grid-gap: 20px;
-        grid-template-columns: 1fr 1fr;
     }
         #zen-explanation{
-            margin-top:20px;
             background-color: lime;
             padding: 10px;
         }
             #zen-explanation h3{
             }
         #zen-participation{
-            margin-top:20px;
             background-color: red;
             padding: 10px;
         }
@@ -46,38 +36,226 @@ div.page-wrapper{
         #zen-benefits {
             background-color: darkblue;
             padding: 10px;
-            grid-column: 1/3;
         }
             #zen-benefits h3{
             }
         #zen-requirements{
             background-color: deeppink;
             padding: 10px;
-            grid-column: 1/3;
         }
             #zen-requirements h3{
             }
         #zen-supporting footer{
             background-color: yellow;
             padding: 10px;
-            grid-column: 1/3;
-            justify-content: center;/*??????*/
-            text-align: center;
         }
     aside.sidebar/*aside elements*/{
-        display: grid;
-        grid-gap: 20px;
     }
-        div.wrapper{}
-            #design-selection{}
+        div.wrapper{
+            display: grid;
+        }
+            #design-selection{
+                background-color: chocolate;
+                padding: 10px;
+                order: 1;
+            }
                 #design-selection h3{}
                 #design-selection nav{}
                     #design-selection nav ul{}
-            #design-archives{
+            #design-archives {
+                background-color: tomato;
+                padding: 10px;
+                order: 0;
             }
                 #design-archives h3{}
                 #design-archives nav{}
-                    #design-archives nav ul{}
-            #zen-resources{}
+                    #design-archives nav ul li.next:hover{
+                    }
+            #zen-resources{
+                background-color: royalblue;
+                padding: 10px;
+                order: 2;
+            }
                 #zen-resources h3{}
                 #zen-resources ul{}
+/*Why does it start work when width >= 321 ????*/
+@media (min-width: 401px) {
+    div.page-wrapper{
+        max-width: 800px;
+        margin: auto;
+    }
+    #zen-intro/*header plus introduction*/{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+    }
+        #zen-intro header{
+            background-color: green;
+            padding: 10px;
+        }
+        #zen-summary{
+            background-color: gold;
+            padding: 10px;
+        }
+        #zen-preamble{
+            background-color: darkorange;
+            padding: 10px;
+            grid-column: 1/3;
+    }
+            #zen-preamble h3{}
+    #zen-supporting/*main*/{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+        #zen-explanation{
+            background-color: lime;
+            padding: 10px;
+            grid-column: 1/3;
+        }
+            #zen-explanation h3{
+        }
+        #zen-participation{
+            background-color: red;
+            padding: 10px;
+            grid-column: 3/5;
+        }
+            #zen-participation h3{
+        }
+        #zen-benefits {
+            background-color: darkblue;
+            padding: 10px;
+        }
+            #zen-benefits h3{
+        }
+        #zen-requirements{
+            background-color: deeppink;
+            padding: 10px;
+            grid-column: 2/5;
+        }
+            #zen-requirements h3{
+        }
+        #zen-supporting footer{
+            background-color: yellow;
+            padding: 10px;
+            grid-column: 1/5;
+        }
+    aside.sidebar/*aside elements*/{
+    }
+    div.wrapper{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+        #design-selection{
+            background-color: chocolate;
+            padding: 10px;
+            order:1;
+        }
+            #design-selection h3{}
+            #design-selection nav{}
+                #design-selection nav ul{}
+        #design-archives {
+            background-color: tomato;
+            padding: 10px;
+            order:0;
+            grid-column: 1/3;
+        }
+            #design-archives h3{}
+            #design-archives nav{}
+                #design-archives nav ul{}
+        #zen-resources{
+            background-color: royalblue;
+            padding: 10px;
+            order:2;
+
+        }
+            #zen-resources h3{}
+            #zen-resources ul{}
+}
+@media (min-width: 801px) {
+    div.page-wrapper{
+        margin: auto 7% auto 3%;
+        /*It has been done to put the page near to
+        left corner*/
+        max-width: 1000px;
+    }
+        #zen-intro/*header plus introduction*/{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+            #zen-intro header{
+                background-color: green;
+                padding: 10px;
+                grid-column: 1/4;
+            }
+            #zen-summary{
+                background-color: gold;
+                padding: 10px;
+            }
+            #zen-preamble{
+                background-color: darkorange;
+                padding: 10px;
+                grid-column: 2/4;
+            }
+                #zen-preamble h3{}
+        #zen-supporting/*main*/{
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 1fr);
+        }
+            #zen-explanation{
+                background-color: lime;
+                padding: 10px;
+            }
+                #zen-explanation h3{}
+            #zen-participation{
+                background-color: red;
+                padding: 10px;
+            }
+                #zen-participation h3{}
+            #zen-benefits{
+                background-color: darkblue;
+                padding: 10px;
+            }
+                #zen-benefits h3{}
+            #zen-requirements{
+                background-color: deeppink;
+                padding: 10px;
+            }
+                #zen-requirements h3{}
+            #zen-supporting footer{
+                background-color: yellow;
+                padding: 10px;
+            }
+        aside.sidebar/*aside elements*/{}
+        div.wrapper{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-areas:
+                    "archives . resources"
+                    ". selection .";
+        }
+            #design-selection{
+                background-color: chocolate;
+                padding: 10px;
+                order: 3;
+                grid-column: 2/3;
+            }
+                #design-selection h3{}
+                    #design-selection nav{}
+                    #design-selection nav ul{}
+            #design-archives{
+                background-color: tomato;
+                padding: 10px;
+                order: 1;
+                grid-column: 1/2;
+            }
+                #design-archives h3{}
+                #design-archives nav{}
+                #design-archives nav ul{}
+            #zen-resources{
+                background-color: royalblue;
+                padding: 10px;
+                order: 2;
+                grid-column: 3/4;
+            }
+                #zen-resources h3{}
+                #zen-resources ul{}
+}
